@@ -14,19 +14,28 @@ body, html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.main-text-wrapper {
+    position: relative;
+    top: -6rem;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
 h1 {
    width: 100%;
    text-align: center;
    color: #ffffff;
    margin: 0;
    position: relative;
-   top: -8rem;
    font-size: 3rem;
+   padding: 1.2rem 0;
 }
 
 h2, p {
     margin: 0.2rem 0;
     user-select: none;
+    color: #ffffff;
 }
 
 button {
@@ -111,6 +120,7 @@ main {
     flex-direction: column;
     justify-content: center;
     padding: 0 5%;
+    position: relative;
 }
 
 #audio-player {
@@ -145,13 +155,22 @@ main {
     display: none;
 }
 
-.progress {
+.progress-wrapper {
     position: absolute;
     bottom: 0;
-    left: 300px;
+    left: 0;
+    height: 10px;
+    width: 400px;
+    pointer-events: all;
+    background-color: #2b2b2b;
+}
+
+.progress {
+    width: 0%;
     background: rgb(10, 123, 230);
     height: 10px;
-    transition: width 0.5s ease;
+    transition: width 0.2s ease;
+    pointer-events: none !important;
 }
 
 #listen-spotify {

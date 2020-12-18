@@ -7,6 +7,9 @@ const imageEl = document.getElementById('cover-art');
 const title = document.getElementById('title');
 const artist = document.getElementById('artist');
 const resultsWrapper = document.getElementById('search-results');
+const progressWrapper = audioPlayer.querySelector(".progress-wrapper");
+const progressBar = audioPlayer.querySelector(".progress");
+let progressWidth;
 let token;
 
 fetch("https://blooming-reef-63913.herokuapp.com/api/token")
@@ -76,11 +79,18 @@ const playPause = () => {
 }
 
 setInterval(() => {
-    const progressBar = audioPlayer.querySelector(".progress");
-    progressBar.style.width = audioEl.currentTime / audioEl.duration * 100 + "%";
+    progressWidth = progressBar.style.width = audioEl.currentTime / audioEl.duration * 100 + "%";
 },500);
 
-
-
-
 document.getElementById('play').addEventListener('click', playPause);
+
+
+const scrub = (e) => {
+    let rect = e.target.getBoundingClientRect()
+    let x = e.clientX - rect.left;
+    let percentOfTotalWidth = x / 400 * 100;
+    progressWidth = progressBar.style.width = percentOfTotalWidth + '%';
+    audioEl.currentTime = percentOfTotalWidth / audioEl.duration * 10;
+}
+
+progressWrapper.addEventListener('click', scrub);
