@@ -1064,6 +1064,10 @@ const scrub = (e) => {
     let rect = e.target.getBoundingClientRect()
     let x = e.clientX - rect.left;
     let percentOfTotalWidth = x / 400 * 100;
+    console.log(document.querySelector('body').clientWidth);
+    if (document.querySelector('body').clientWidth < 900) {
+        percentOfTotalWidth = x / document.querySelector('body').clientWidth * 100;
+    }
     progressWidth = progressBar.style.width = percentOfTotalWidth + '%';
     audioEl.currentTime = percentOfTotalWidth / audioEl.duration * 9;
 }
