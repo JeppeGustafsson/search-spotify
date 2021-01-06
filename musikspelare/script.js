@@ -1,3 +1,4 @@
+const Dragdealer = require('dragdealer').Dragdealer;
 const playerWrapper = document.getElementById('playerId');
 const audioPlayer = document.getElementById('audio-player');
 const searchBtn = document.getElementById('search-btn');
@@ -9,6 +10,10 @@ const artist = document.getElementById('artist');
 const resultsWrapper = document.getElementById('search-results');
 const progressWrapper = audioPlayer.querySelector(".progress-wrapper");
 const progressBar = audioPlayer.querySelector(".progress");
+const volume = document.getElementById('volume');
+const volumeHandle = document.getElementById('handle');
+const volumeColor = document.getElementById('vol_col');
+const volumeIcon = document.getElementById('vol-icon');
 let progressWidth;
 let token;
 
@@ -90,7 +95,57 @@ const scrub = (e) => {
     let x = e.clientX - rect.left;
     let percentOfTotalWidth = x / 400 * 100;
     progressWidth = progressBar.style.width = percentOfTotalWidth + '%';
-    audioEl.currentTime = percentOfTotalWidth / audioEl.duration * 10;
+    audioEl.currentTime = percentOfTotalWidth / audioEl.duration * 9;
 }
 
 progressWrapper.addEventListener('click', scrub);
+
+const showVolume = () => {
+    console.log(volumeDragdealer.options);
+    volume.classList.toggle('show');
+}
+
+volumeIcon.addEventListener('click', showVolume);
+
+const volumeDragdealer = new Dragdealer(volume, {
+    disabled: false,
+    horizontal: false,
+    vertical: true,
+    y: 0,
+    steps: 5,
+    snap: true,
+    animationCallback: function(y) {
+       let audioVolume = parseFloat(volumeHandle.style.transform.slice(11,12) / 10);
+
+      switch (audioVolume) {
+        case 0:
+          audioEl.volume = 0.9
+          volumeColor.style.height = '95px'
+          break;
+      
+        case 0.2:
+          audioEl.volume = 0.6
+          volumeColor.style.height = '65px'
+          break;
+
+        case 0.4:
+          audioEl.volume = 0.4
+          volumeColor.style.height = '45px'
+          break;
+        
+        case 0.6:
+          audioEl.volume = 0.2
+          volumeColor.style.height = '25px'
+          break;
+        
+        case 0.8:
+          audioEl.volume = 0
+          volumeColor.style.height = '0px'
+          break;
+      }
+    }
+});
+
+
+
+

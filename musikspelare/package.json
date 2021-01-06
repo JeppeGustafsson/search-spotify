@@ -9,5 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dragdealer": "^0.10.0"
   }
 }

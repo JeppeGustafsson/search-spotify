@@ -29,9 +29,14 @@
                         <img class="play-img" src="play.png" alt="play">
                         <img class="pause-img" src="pause.jpg" alt="pause">
                     </button>
-                    <aside class="texts">
+                    <aside class="right-content">
                         <h2 id="title"></h2>
                         <p id="artist"></p>
+                        <div id="volume" class="dragdealer volume-control">
+                            <div class="handle drag-handle" id="handle"></div>
+                            <div id="vol_col" class="volume-color"></div>
+                        </div>
+                        <img id="vol-icon" src="volume-up-4-32.png" alt="volume">
                         <div class="progress-wrapper">
                             <div class="progress"></div>
                         </div>
@@ -50,6 +55,6 @@
         </aside>
     </main>
 
-    <script src="script.js"></script>
+    <script src="bundle.js"></script>
 </body>
 </html>
