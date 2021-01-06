@@ -71,7 +71,8 @@ input {
 }
 
 main {
-    width: 1100px;
+    max-width: 1100px;
+    width: 100%;
 }
 
 .main-wrapper {
@@ -117,13 +118,16 @@ main {
 }
 
 @media screen and (max-width: 900px) {
+    body, html {
+        display: block !important;
+    }
     .main-wrapper {
         flex-direction: column;
         padding: 10px;
     }
     #audio-player {
         flex-direction: column;
-        min-height: 600px;
+        min-height: 480px;
     }
     .play-btn {
         width: 100% !important;
@@ -139,7 +143,7 @@ main {
         max-height: none !important;
     }
     .right-content {
-        height: 300px !important;
+        height: 180px !important;
     }
     .progress-wrapper {
         width: 100% !important;
@@ -150,9 +154,11 @@ main {
     }
     #vol-icon {
         right: 60px !important;
+        display: none;
     }
     .volume-control {
         right: 70px !important;
+        display: none;
     }
     #listen-spotify {
         width: 100% !important;
