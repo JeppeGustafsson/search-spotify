@@ -14,12 +14,63 @@ body, html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+    opacity: 0;
+    animation: showAni 1s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes showAni {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes startAni {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.loader {
+    position: absolute;
+    top: 40%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    animation: startAni 3s forwards;
+    width: 150px;
+    height: 150px;
+}
+
 .main-text-wrapper {
     position: relative;
-    top: -6rem;
     text-align: center;
     max-width: 650px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: -100px;
+    bottom: 10px;
 }
 
 h1 {
