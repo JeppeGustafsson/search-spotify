@@ -1008,6 +1008,7 @@ const search = async () => {
     console.log(songs);
     insertSongData();
     renderSongList();
+    document.getElementById('blur').style.backgroundImage = `url(${songs[currentSong].album.images[0].url})`;
 }
 
 const renderSongList = () => {
@@ -1025,7 +1026,13 @@ const findIndex = (e) => {
     const index = resultChildren.indexOf(e.target.parentElement);
     currentSong = index;
     insertSongData();
+    document.getElementById('blur').style.backgroundImage = `url(${songs[currentSong].album.images[0].url})`;
 }
+
+// document.querySelectorAll('.song').forEach(song => {
+//     song.addEventListener('click', document.getElementById('blur')
+//     .style.backgroundImage = `url(${songs[currentSong].album.images[0].url})`)
+// })
 
 const insertSongData = () => {
     audioEl.src = songs[currentSong].preview_url;
@@ -1038,7 +1045,6 @@ const insertSongData = () => {
     imageEl.src = songs[currentSong].album.images[1].url;
     title.innerHTML = songs[currentSong].name;
     artist.innerHTML = songs[currentSong].artists[0].name;
-    
 }
 
 searchBtn.addEventListener('click', search);

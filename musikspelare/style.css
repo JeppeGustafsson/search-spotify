@@ -12,12 +12,31 @@ body, html {
     background-color: #1d1d1d;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+.blurren-img {
+    width: 120%;
+    height: 120%;
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    filter: blur(30px);
+    z-index: 0;
+} 
+.blurren-img > div {
+    width: 120%;
+    height: 120%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 main {
     opacity: 0;
     animation: showAni 1s forwards;
     animation-delay: 3s;
+    z-index: 4;
 }
 
 @keyframes showAni {
@@ -53,6 +72,7 @@ main {
     animation: startAni 3s forwards;
     width: 150px;
     height: 150px;
+    z-index: 5;
 }
 
 .main-text-wrapper {
@@ -171,6 +191,10 @@ main {
 @media screen and (max-width: 900px) {
     body, html {
         display: block !important;
+        overflow: auto;
+    }
+    .blurren-img {
+        display: none !important;
     }
     .main-wrapper {
         flex-direction: column;
